@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import security.jwt.securityjwt.account.mapper.AccountMapper;
 import security.jwt.securityjwt.account.pojo.param.UserLoginInfoParam;
+import security.jwt.securityjwt.account.pojo.vo.AccountMeVO;
 import security.jwt.securityjwt.account.security.CustomUserDetails;
 import security.jwt.securityjwt.account.pojo.vo.UserLoginVO;
 import security.jwt.securityjwt.account.service.IUserService;
@@ -21,6 +22,8 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private AccountMapper accountMapper;
 
     @Override
     public UserLoginVO login(UserLoginInfoParam userLoginInfoParam) {
@@ -42,5 +45,17 @@ public class UserServiceImpl implements IUserService {
 
 
         return userLoginVO;
+    }
+
+    /**
+     * 登录后获取个人信息
+     *
+     * @param userID
+     * @return
+     */
+    @Override
+    public AccountMeVO me(Long userID) {
+        return accountMapper.SelectByMe(userID);
+
     }
 }

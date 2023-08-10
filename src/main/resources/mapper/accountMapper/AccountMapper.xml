@@ -9,4 +9,9 @@
         FROM user
         where username = #{username}
     </select>
+    <select id="SelectByMe" resultType="security.jwt.securityjwt.account.pojo.vo.AccountMeVO">
+        SELECT nickname, fans, follows, imgUrl, accountLevel
+        FROM user
+        WHERE userID = #{userID}
+    </select>
 </mapper>
