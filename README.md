@@ -8,6 +8,7 @@
 * RESTful风格
 * 全局异常处理器 ,定义了业务异常
 *  WebMvcConfiguration, ValidationConfiguration, MyBatisConfiguration的配置类 
-* 当事人信息 
+* 当事人信息
+
 JDK 17
 
